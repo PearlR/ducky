@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { UPDATE_OP, UPDATE_X, UPDATE_Y } from '../state/reducer'
+import { UPDATE_OP, UPDATE_X, UPDATE_Y, UPDATE_EQUALS } from '../state/reducer'
 
 const Counter = props => {
-  const { x, y, op, handleSelect, handleChangeX, handleChangeY } = props
+  const { x, y, op, equals, handleSelect, handleChangeX, handleChangeY, handleEquals } = props
 
   return <div>
-           <h1>{x} {op} {y} =</h1>
+           <h1>{x} {op} {y} = {equals}</h1>
            <input type='text' value={x} onChange={handleChangeX} />
            <select onChange={handleSelect}>
              <option value='+'>
@@ -24,11 +24,14 @@ const Counter = props => {
              </option>
            </select>
            <input type='text' value={y} onChange={handleChangeY} />
+           <button value='=' onClick={handleEquals}>
+             =
+           </button>
          </div>
 }
 
 const mapStateToProps = state => {
-  return { op: state.op, x: state.x, y: state.y }
+  return { op: state.op, x: state.x, y: state.y, equals: state.equals }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -41,6 +44,9 @@ const mapDispatchToProps = dispatch => {
     },
     handleChangeY: event => {
       dispatch({ type: UPDATE_Y, payload: { y: parseInt(event.target.value, 10) || '' } })
+    },
+    handleEquals: event => {
+      dispatch({ type: UPDATE_EQUALS })
     }
   }
 }

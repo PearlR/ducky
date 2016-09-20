@@ -1,8 +1,9 @@
 export const UPDATE_OP = 'UPDATE_OP'
 export const UPDATE_X = 'UPDATE_X'
 export const UPDATE_Y = 'UPDATE_Y'
+export const UPDATE_EQUALS = 'UPDATE_EQUALS'
 
-export const DEFAULT_STATE = { op: '+', x: 0, y: 0 }
+export const DEFAULT_STATE = { op: '+', x: 0, y: 0, equals: 0 }
 
 export const reducer = (state = DEFAULT_STATE , { type, payload }) => {
 
@@ -23,6 +24,12 @@ export const reducer = (state = DEFAULT_STATE , { type, payload }) => {
       return {
         ...state,
         y: payload.y
+      }
+
+    case UPDATE_EQUALS:
+      return {
+        ...state,
+        equals: state.x + payload.op + state.y
       }
 
     default:
