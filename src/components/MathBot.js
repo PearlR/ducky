@@ -7,7 +7,7 @@ const Counter = props => {
   const { x, y, op, equals, handleSelect, handleChangeX, handleChangeY, updateTotal} = props
 
   return <div>
-           <h1 onChange={updateTotal}>{x} {op} {y} = {equals}</h1>
+           <h1>{x} {op} {y} = {equals}</h1>
            <input type='text' value={x} onChange={handleChangeX} />
            <select onChange={handleSelect}>
              <option value='+'>
@@ -24,6 +24,9 @@ const Counter = props => {
              </option>
            </select>
            <input type='text' value={y} onChange={handleChangeY} />
+           <button onClick={updateTotal}>
+             =
+           </button>
          </div>
 }
 
