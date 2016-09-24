@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { UPDATE_OP, UPDATE_X, UPDATE_Y, CALCULATE_TOTAL } from '../state/reducer'
 
 const Counter = props => {
-  const { x, y, op, equals, handleSelect, handleChangeX, handleChangeY, updateTotal} = props
+  const { x, y, op, equals, handleSelect, handleChangeX, handleChangeY} = props
 
   return <div>
            <h1>{x} {op} {y} = {equals}</h1>
@@ -24,14 +24,10 @@ const Counter = props => {
              </option>
            </select>
            <input type='text' value={y} onChange={handleChangeY} />
-           <button onClick={updateTotal}>
-             =
-           </button>
          </div>
 }
 
 const mapStateToProps = state => {
-  console.log('this is equals', state.equals)
   return { op: state.op, x: state.x, y: state.y, equals: state.equals }
 }
 
@@ -46,8 +42,8 @@ const mapDispatchToProps = dispatch => {
     handleChangeY: event => {
       dispatch({ type: UPDATE_Y, payload: { y: parseInt(event.target.value, 10) || '' } })
     },
-    updateTotal: event => {
-      dispatch({ type: CALCULATE_TOTAL, payload: { equals: parseInt(event.target.value, 10) || '' } })
+    updateTotal: () => {
+      dispatch({ type: CALCULATE_TOTAL })
     }
   }
 }
