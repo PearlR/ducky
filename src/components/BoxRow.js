@@ -19,15 +19,16 @@ const BoxRow = ({ row, data, open, handleClick }) => {
 			heading={box.title} 
 			content={box.tagline} 
 			handleClick={handleClick}
+      className='flex-items-default' 
 		/>
 	}, data) 
 
 	return <div>
 		<div className='row'>
-			<div className='boxes'>
+      <div className='boxes flex-container'>
 				{boxes}
 			</div>
-			<BoxDetails content={content.details}/>
+			{!content.details || <BoxDetails content={content.details}/>}
 		</div>
 	</div>
 }
