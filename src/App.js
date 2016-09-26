@@ -8,7 +8,7 @@ const indexedMap = addIndex(map)
 
 const App = () => {
   const rows = indexedMap((row, idx) => {
-    return <BoxRow data={row} key={idx} />
+    return <BoxRow data={row} key={idx} row={idx} />
   }, splitEvery(3, data))
   
 	return <div>

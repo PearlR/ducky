@@ -7,9 +7,9 @@ import BoxDetails from './BoxDetails'
 
 import { TOGGLE_DETAILS } from '../state/reducer'
 
-const BoxRow = ({ data, open, handleClick }) => {
+const BoxRow = ({ row, data, open, handleClick }) => {
 	const content = find(box => {
-		return box.id === open
+		return box.id === open[row]
 	}, data) || {}
 
 	const boxes = map(box => {
@@ -38,10 +38,10 @@ const mapStateToProps = ({ open }) => {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		handleClick: event => {
-			dispatch({ type: TOGGLE_DETAILS, payload: { box: event.currentTarget.id } })
+			dispatch({ type: TOGGLE_DETAILS, payload: { box: event.currentTarget.id, row: ownProps.row } })
 		}
 	}
 }
