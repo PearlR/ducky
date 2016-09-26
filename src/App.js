@@ -12,7 +12,7 @@ const App = () => {
   }, splitEvery(3, data))
   
 	return <div>
-	  <h1>My Cool Box</h1>
+	  <h1>My Cool Box Thingy</h1>
 	  {rows}
 	</div>
 }
