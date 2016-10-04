@@ -6,7 +6,7 @@ const toggleOpen = (current, next) => {
   return current === next ? undefined : next
 }
 
-export const reducer = (state = DEFAULT_STATE , { type, payload = {} }) => {
+export const reducer = (state = DEFAULT_STATE, { type, payload = {} }) => {
   const { row, box } = payload
   
   switch (type) {

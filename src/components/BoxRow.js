@@ -34,6 +34,9 @@ const BoxRow = ({ row, data, open, handleClick }) => {
 }
 
 const mapStateToProps = ({ open }) => {
+
+	console.log(open)
+
 	return {
 		open
 	}
